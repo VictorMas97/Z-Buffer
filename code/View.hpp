@@ -17,13 +17,12 @@
     #include "Rasterizer.hpp"
     #include "Color_Buffer_Rgb565.hpp"
     #include "Color_Buffer_Rgba8888.hpp"
-    #include "tiny_obj_loader.h"
+    #include "Mesh.hpp"
 
     namespace example
     {
-
         using std::vector;
-        using toolkit::Point4i;
+        //using toolkit::Point4i;
         using toolkit::Point4f;
 
         class View
@@ -31,11 +30,11 @@
         private:
 
             typedef Color_Buffer_Rgba8888 Color_Buffer;
-            typedef Color_Buffer::Color   Color;
+            //typedef Color_Buffer::Color   Color;
             typedef Point4f               Vertex;
-            typedef vector< Vertex >      Vertex_Buffer;
-            typedef vector< int    >      Index_Buffer;
-            typedef vector< Color  >      Vertex_Colors;
+            //typedef vector< Vertex >      Vertex_Buffer;
+            //typedef vector< int    >      Index_Buffer;
+            //typedef vector< Color  >      Vertex_Colors;
 
         private:
 
@@ -44,24 +43,20 @@
 
             Color_Buffer               Color_buffer;
             Rasterizer< Color_Buffer > rasterizer;
+			vector< Mesh >	  meshes;
 
-            Vertex_Buffer     original_vertices;
-            Index_Buffer      original_indices;
-            Vertex_Colors     original_colors;
-            Vertex_Buffer     transformed_vertices;
-            vector< Point4i > display_vertices;
+            //Vertex_Buffer     original_vertices;
+            //Index_Buffer      original_indices;
+            //Vertex_Colors     original_colors;
+            //Vertex_Buffer     transformed_vertices;
+            //vector< Point4i > display_vertices;
 
         public:
 
             View(size_t width, size_t height);
-
             void update ();
             void paint  ();
-
-        private:
-
-            bool is_frontface (const Vertex * const projected_vertices, const int * const indices);
-
+            static bool is_frontface (const Vertex * const projected_vertices, const int * const indices);		
         };
     }
 #endif

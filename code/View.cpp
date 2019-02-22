@@ -9,15 +9,16 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#define TINYOBJLOADER_IMPLEMENTATION 
+//#define TINYOBJLOADER_IMPLEMENTATION 
 #include <cmath>
 #include <cassert>
-#include "View.hpp"
 #include <Vector.hpp>
 #include <Scaling.hpp>
 #include <Rotation.hpp>
 #include <Projection.hpp>
 #include <Translation.hpp>
+#include "View.hpp"
+
 using namespace toolkit;
 
 namespace example
@@ -29,61 +30,62 @@ namespace example
         Color_buffer(width, height),
         rasterizer  (Color_buffer)
     {
-        // Se definen los datos de los vertices:
-		std::string inputfile = "../../assets/bunny.obj";
-		tinyobj::attrib_t attrib;
-		std::vector<tinyobj::shape_t> shapes;
-		std::vector<tinyobj::material_t> materials;
+		//      // Se definen los datos de los vertices:
+		//std::string inputfile = "../../assets/bunny.obj";
+		//tinyobj::attrib_t attrib;
+		//std::vector<tinyobj::shape_t> shapes;
+		//std::vector<tinyobj::material_t> materials;
 
-		std::string warn;
-		std::string err;
-		bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, inputfile.c_str());
+		//std::string warn;
+		//std::string err;
+		//bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, inputfile.c_str());
 
-		if (!ret) {
-			exit(1);
-		}
+		//if (!ret) 
+		//{
+		//	exit(1);
+		//}
 
-		size_t number_of_vertices = attrib.vertices.size() / 3;
+		//size_t number_of_vertices = attrib.vertices.size() / 3;
 
-		original_vertices.resize(number_of_vertices);
+		//original_vertices.resize(number_of_vertices);
 
-		for (size_t index = 0, vertexIndex = 0; index < number_of_vertices, vertexIndex < attrib.vertices.size(); index++, vertexIndex += 3)
-		{
-			original_vertices[index] = Vertex({ attrib.vertices[vertexIndex], attrib.vertices[vertexIndex + 1],attrib.vertices[vertexIndex + 2], 1 });
-		}
+		//for (size_t index = 0, vertexIndex = 0; index < number_of_vertices, vertexIndex < attrib.vertices.size(); index++, vertexIndex += 3)
+		//{
+		//	original_vertices[index] = Vertex({ attrib.vertices[vertexIndex], attrib.vertices[vertexIndex + 1],attrib.vertices[vertexIndex + 2], 1 });
+		//}
 
-		transformed_vertices.resize(number_of_vertices);
-		display_vertices.resize(number_of_vertices);
+		//transformed_vertices.resize(number_of_vertices);
+		//display_vertices.resize(number_of_vertices);
 
 
-		size_t number_of_colors = attrib.colors.size() / 3;
+		//size_t number_of_colors = attrib.colors.size() / 3;
 
-		assert(number_of_colors == number_of_vertices);
+		//assert(number_of_colors == number_of_vertices);
 
-		original_colors.resize(number_of_colors);
+		//original_colors.resize(number_of_colors);
 
-		for (size_t index = 0; index < number_of_colors; index++)
-		{
-			original_colors[index].set(255, 0, 0);
-		}
+		//for (size_t index = 0; index < number_of_colors; index++)
+		//{
+		//	original_colors[index].set(255, 0, 0);
+		//}
 
-		size_t number_of_triangles = shapes[0].mesh.indices.size() / 3;
+		//size_t number_of_triangles = shapes[0].mesh.indices.size() / 3;
 
-		original_indices.resize(number_of_triangles * 3);
+		//original_indices.resize(number_of_triangles * 3);
 
-		Index_Buffer::iterator indices_iterator = original_indices.begin();
+		//Index_Buffer::iterator indices_iterator = original_indices.begin();
 
-		for (size_t triangle_index = 0, vertexIndex = 0; triangle_index < number_of_triangles; triangle_index++, vertexIndex += 3)
-		{
-			*indices_iterator++ = shapes[0].mesh.indices[vertexIndex].vertex_index;
-			*indices_iterator++ = shapes[0].mesh.indices[vertexIndex + 1].vertex_index;
-			*indices_iterator++ = shapes[0].mesh.indices[vertexIndex + 2].vertex_index;
-		}
+		//for (size_t triangle_index = 0, vertexIndex = 0; triangle_index < number_of_triangles; triangle_index++, vertexIndex += 3)
+		//{
+		//	*indices_iterator++ = shapes[0].mesh.indices[vertexIndex].vertex_index;
+		//	*indices_iterator++ = shapes[0].mesh.indices[vertexIndex + 1].vertex_index;
+		//	*indices_iterator++ = shapes[0].mesh.indices[vertexIndex + 2].vertex_index;
+		//}
     }
 
     void View::update ()
     {  
-        static float angle = 0.f;
+       /* static float angle = 0.f;
 
         angle += 0.025f;
 
@@ -98,9 +100,9 @@ namespace example
 
         // Creacion de la matriz de transformacion unificada:
 
-        Transformation3f transformation = projection * translation * rotation_x * rotation_y * scaling;
+        Transformation3f transformation = projection * translation * rotation_x * rotation_y * scaling;*/
 
-        // Se transforman todos los vertices usando la matriz de transformacion resultante:
+       /* // Se transforman todos los vertices usando la matriz de transformacion resultante:
 
         for (size_t index = 0, number_of_vertices = original_vertices.size (); index < number_of_vertices; index++)
         {
@@ -118,7 +120,7 @@ namespace example
             vertex[1] *= divisor;
             vertex[2] *= divisor;
             vertex[3]  = 1.f;
-        }
+        }*/
     }
 
     void View::paint ()
@@ -128,7 +130,7 @@ namespace example
         // La coordenada Z se escala a un valor suficientemente grande dentro del
         // rango de int (que es lo que espera fill_convex_polygon_z_buffer).
 
-        Scaling3f        scaling        = Scaling3f    (float(width / 2), float(height / 2), 100000000.f);
+        /*Scaling3f        scaling        = Scaling3f    (float(width / 2), float(height / 2), 100000000.f);
         Translation3f    translation    = Translation3f(float(width / 2), float(height / 2), 0.f);
         Transformation3f transformation = translation * scaling;
 
@@ -157,7 +159,7 @@ namespace example
 
         // Se copia el framebuffer oculto en el framebuffer de la ventana:
 
-        rasterizer.get_color_buffer ().gl_draw_pixels (0, 0);
+        rasterizer.get_color_buffer ().gl_draw_pixels (0, 0);*/
     }
 
     bool View::is_frontface (const Vertex * const projected_vertices, const int * const indices)
@@ -166,8 +168,8 @@ namespace example
         const Vertex & v1 = projected_vertices[indices[1]];
         const Vertex & v2 = projected_vertices[indices[2]];
 
-        // Se asumen coordenadas proyectadas y polÃ­gonos definidos en sentido horario.
-        // Se comprueba a quÃ© lado de la lÃ­nea que pasa por v0 y v1 queda el punto v2:
+		// Se asumen coordenadas proyectadas y polígonos definidos en sentido horario.
+		// Se comprueba a qué lado de la línea que pasa por v0 y v1 queda el punto v2:
 
         return ((v1[0] - v0[0]) * (v2[1] - v0[1]) - (v2[0] - v0[0]) * (v1[1] - v0[1]) > 0.f);
     }
