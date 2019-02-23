@@ -40,6 +40,7 @@ int main ()
     glMatrixMode   (GL_PROJECTION);
     glLoadIdentity ();
     glOrtho        (0, GLdouble(window_width), 0, GLdouble(window_height), -1, 1);
+	glClearColor   (0.5f, 0.5f, 0.5f, 0.5f);
 
     // Run the main loop:
 
