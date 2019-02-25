@@ -18,41 +18,44 @@ namespace example
         std::string err;
         bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &warn, &err, obj_file_path.c_str());
 
-        if (!ret) {
+        if (!ret) 
+		{
             exit(1);
         }
-		const std::vector<tinyobj::real_t> vertices = attrib.vertices;
-        size_t number_of_vertices = attrib.vertices.size() / 3;
 
-        original_vertices.resize(number_of_vertices);
 
-        for (size_t index = 0, vertexIndex = 0; index < number_of_vertices, vertexIndex < attrib.vertices.size(); index++, vertexIndex += 3)
+
+        size_t number_of_vertices = attrib.vertices.size() / 3;  // Guarda el número de vértices en la variable number_of_vertices
+        original_vertices.resize(number_of_vertices);            // Hace un resize teniendo en cuenta la variable number_of_vertices
+
+		// La variable original_vertices guarda la posición de cada vértice en vectores de 4 posiciones (x, y, z, w)
+        for (size_t index = 0, vertexIndex = 0; index < number_of_vertices; index++, vertexIndex += 3)
         {
             original_vertices[index] = Vertex({ attrib.vertices[vertexIndex], attrib.vertices[vertexIndex + 1],attrib.vertices[vertexIndex + 2], 1 });
         }
 
-        transformed_vertices.resize(number_of_vertices);
-        display_vertices.resize(number_of_vertices);
+        transformed_vertices.resize(number_of_vertices); // Hace un resize teniendo en cuenta la variable number_of_vertices
+        display_vertices.resize(number_of_vertices);     // Hace un resize teniendo en cuenta la variable number_of_vertices
 
-		const std::vector<tinyobj::real_t> colors = attrib.colors;
-        size_t number_of_colors = attrib.colors.size() / 3;
+		
 
-        assert(number_of_colors == number_of_vertices);
+        size_t number_of_colors = attrib.colors.size() / 3; // Guarda el número de colores en la variable number_of_colors
+        assert(number_of_colors == number_of_vertices);     // Compruba si la variable number_of_colors es igual a la variable number_of_vertices
+        original_colors.resize(number_of_colors);           // Hace un resize teniendo en cuenta la variable number_of_vertices
 
-        original_colors.resize(number_of_colors);
-
+		// La variable original_colors guarda el color de cada vértice en vectores de 3 posiciones (r, g, b)
         for (size_t index = 0; index < number_of_colors; index++)
         {
             original_colors[index].set(255, 0, 0);
         }
 
-		const tinyobj::mesh_t triangles = shapes[0].mesh;
-        size_t number_of_triangles = shapes[0].mesh.indices.size() / 3;
 
-        original_indices.resize(number_of_triangles * 3);
 
-        Index_Buffer::iterator indices_iterator = original_indices.begin();
+        size_t number_of_triangles = shapes[0].mesh.indices.size() / 3;     // Guarda el número de triángulos en la variable number_of_triangles
+        original_indices.resize(number_of_triangles * 3);                   // Hace un resize teniendo en cuenta la variable number_of_triangles multiplicada por 3
+        Index_Buffer::iterator indices_iterator = original_indices.begin(); // Crea un objeto de tipo iterator y lo iguala a la variable original_indices 
 
+		// La variable indices_iterator guarda el indice de cada vértice de cada triángulo en un int
         for (size_t triangle_index = 0, vertexIndex = 0; triangle_index < number_of_triangles; triangle_index++, vertexIndex += 3)
         {
             *indices_iterator++ = shapes[0].mesh.indices[vertexIndex].vertex_index;
@@ -65,7 +68,6 @@ namespace example
 	{
 
 		// Se transforman todos los vertices usando la matriz de transformacion resultante:
-
 		for (size_t index = 0, number_of_vertices = original_vertices.size(); index < number_of_vertices; index++)
 		{
 			// Se multiplican todos los vertices originales con la matriz de transformacion y

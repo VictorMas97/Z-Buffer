@@ -9,19 +9,17 @@
  *                                                                             *
 \* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-#include <cmath>
-#include <cassert>
-#include <Vector.hpp>
-#include <Scaling.hpp>
-#include <Rotation.hpp>
-#include <Projection.hpp>
-#include <Translation.hpp>
 #include "View.hpp"
+#include <iostream>
+#include "Projection.hpp"
+#include "Translation.hpp"
 
-using namespace toolkit;
+//using namespace toolkit;
 
 namespace example
 {
+	using namespace toolkit;
+
     View::View(size_t width, size_t height)
     :
         width       (width ),
@@ -29,9 +27,9 @@ namespace example
         Color_buffer(width, height),
         rasterizer  (Color_buffer)
     {
-		meshes.push_back({ "../../assets/tree1.obj", {1.8f,1,-10 }, 1,{ 0,120,0 } });
+		meshes.push_back({ "../../assets/bunny.obj", {1.8f,1,-10 }, 1,{ 0,120,0 } });
 		//meshes.push_back({ "../../assets/sphere.obj",{ 1,0,-10 }, 1 });
-		meshes.push_back({ "../../assets/bunny.obj",{ 1,0,-10 }, 1, {120,0,0} });
+		//meshes.push_back({ "../../assets/bunny.obj",{ 1,0,-10 }, 1, {120,0,0} });
 		//meshes.push_back({ "../../assets/terrain.obj",{ 1,0,-10 }, 1, {120,0,0} });
     }
 

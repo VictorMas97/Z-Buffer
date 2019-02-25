@@ -13,7 +13,7 @@
 #define VIEW_HEADER
 
 #include <vector>
-#include <Point.hpp>
+#include "Point.hpp"
 #include "Rasterizer.hpp"
 #include "Color_Buffer_Rgb565.hpp"
 #include "Color_Buffer_Rgba8888.hpp"
@@ -43,7 +43,6 @@ namespace example
 	public:
 
 		View(size_t width, size_t height);
-
 		void update();
 		void paint();
 		static bool is_frontface(const Vertex * const projected_vertices, const int * const indices);
