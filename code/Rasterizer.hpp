@@ -346,9 +346,9 @@
 
                     while (o0 < o1)
                     {
-                        if (z0 < z_buffer[o0])
+                        if (o0 < 480000 && z0 < z_buffer[o0])
                         {
-                            color_buffer.set_pixel (o0);
+							color_buffer.set_pixel (o0);
                             z_buffer[o0] = z0;
                         }
 
@@ -365,9 +365,9 @@
 
                     while (o1 < o0)
                     {
-                        if (z1 < z_buffer[o1])
+                        if (o1 < 480000 && z1 < z_buffer[o1])
                         {
-                            color_buffer.set_pixel (o1);
+							color_buffer.set_pixel (o1);
                             z_buffer[o1] = z1;
                         }
 
