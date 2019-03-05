@@ -27,7 +27,7 @@ namespace example
         Color_buffer(width, height),
         rasterizer  (Color_buffer)
     {
-		meshes.push_back({ "../../assets/bunny.obj", {1.f,0.f,-10 }, 1,{ 0,120,0 } });
+		//meshes.push_back({ "../../assets/bunny.obj", {1.f,0.f,-10 }, 1,{ 0,120,0 } });
 		meshes.push_back({ "../../assets/tree1.obj",{-1.f,0.f,-10 }, 0.5,{ 0,120,0 } });
 		//meshes.push_back({ "../../assets/bunny.obj",{ 1,0,-10 }, 1, {120,0,0} });
 		//meshes.push_back({ "../../assets/terrain.obj",{ 1,0,-10 }, 1, {120,0,0} });

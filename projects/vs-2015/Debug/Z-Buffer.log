@@ -1,4 +1,5 @@
 ﻿  Mesh.cpp
+c:\users\alumno\documents\z-buffer\code\mesh.cpp(57): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
   View.cpp
   main.cpp
   Generando código...

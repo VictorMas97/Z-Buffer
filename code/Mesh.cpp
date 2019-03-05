@@ -2,6 +2,8 @@
 #include "Mesh.hpp"
 #include <cassert>
 #include <iostream>
+#include <math.h> 
+#include <algorithm>
 #include "Matrix.hpp"
 #include "View.hpp"
 #include "tiny_obj_loader.h"
@@ -27,11 +29,13 @@ namespace example
 
         size_t number_of_vertices = attrib.vertices.size() / 3;  // Guarda el número de vértices en la variable number_of_vertices
         original_vertices.resize(number_of_vertices);            // Hace un resize teniendo en cuenta la variable number_of_vertices
+		original_normals.resize(number_of_vertices);             // Hace un resize teniendo en cuenta la variable number_of_vertices
 
 		// La variable original_vertices guarda la posición de cada vértice en vectores de 4 posiciones (x, y, z, w)
         for (size_t index = 0, vertexIndex = 0; index < number_of_vertices; index++, vertexIndex += 3)
         {
             original_vertices[index] = Vertex({ attrib.vertices[vertexIndex], attrib.vertices[vertexIndex + 1],attrib.vertices[vertexIndex + 2], 1 });
+			original_normals[index] = Vertex({ attrib.normals[vertexIndex], attrib.normals[vertexIndex + 1], attrib.normals[vertexIndex + 2], 0 });
         }
 
         transformed_vertices.resize(number_of_vertices); // Hace un resize teniendo en cuenta la variable number_of_vertices
@@ -42,11 +46,15 @@ namespace example
         size_t number_of_colors = attrib.colors.size() / 3; // Guarda el número de colores en la variable number_of_colors
         assert(number_of_colors == number_of_vertices);     // Compruba si la variable number_of_colors es igual a la variable number_of_vertices
         original_colors.resize(number_of_colors);           // Hace un resize teniendo en cuenta la variable number_of_vertices
-
+		Vertex ligth = Vertex({ 1,0,0 });
 		// La variable original_colors guarda el color de cada vértice en vectores de 3 posiciones (r, g, b)
         for (size_t index = 0; index < number_of_colors; index++)
         {
-            original_colors[index].set(255, 0, 0);
+			float normalVectorModule = sqrt(pow(original_normals[index][0], 2) + pow(original_normals[index][1], 2) + pow(original_normals[index][2], 2));
+			Vertex normalNormalized = Vertex({ original_normals[index][0] / normalVectorModule, original_normals[index][1] / normalVectorModule, original_normals[index][2] / normalVectorModule });
+			float dotProduct = ligth[0] * normalNormalized[0] + ligth[1] * normalNormalized[1] + ligth[2] * normalNormalized[2];
+			float intensity = std::max(dotProduct, 0.f);
+            original_colors[index].set(255 * intensity, 0, 0);
         }
 
 
