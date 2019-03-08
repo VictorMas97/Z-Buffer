@@ -9,6 +9,7 @@
 #include "Point.hpp"
 #include "Color_Buffer_Rgba8888.hpp"
 #include "Translation.hpp"
+#include "Projection.hpp"
 #include "Rotation.hpp"
 #include "Scaling.hpp"
 #include "Rasterizer.hpp"
@@ -25,6 +26,7 @@ namespace example
     using toolkit::Rotation3f;
     using toolkit::Scaling3f;
     using toolkit::Transformation3f;
+	using toolkit::Projection3f;
 
     class Mesh
     {
@@ -42,8 +44,8 @@ namespace example
 
         Mesh() {}
         Mesh(const std::string & obj_file_path, Translation3f position, Scaling3f scale, Color color);
-        void update();
-        void paint(Rasterizer< Color_Buffer > & rasterizer);
+		void update(Projection3f  projection, Transformation3f parentTransform = Transformation3f());
+        void paint(Rasterizer< Color_Buffer > & rasterizer, Transformation3f parentTransform);
 
         Vertex_Buffer     original_vertices;
         Index_Buffer      original_indices;
@@ -51,6 +53,8 @@ namespace example
         Vertex_Buffer     original_normals;
         Vertex_Buffer     transformed_vertices;
         vector< Point4i > display_vertices;
+		Mesh*             parent;
+		vector< std::shared_ptr <Mesh> > children;
 
         Translation3f        translation;
         Rotation3f           rotation_x;

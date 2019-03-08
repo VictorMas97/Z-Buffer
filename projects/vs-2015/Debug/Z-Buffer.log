@@ -1,6 +1,3 @@
-﻿  Mesh.cpp
-c:\users\alumno\documents\z-buffer\code\mesh.cpp(57): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
-  View.cpp
-  main.cpp
-  Generando código...
-  Z-Buffer.vcxproj -> C:\Users\Alumno\Documents\Z-Buffer\projects\vs-2015\Debug\Z-Buffer.exe
+﻿  View.cpp
+d:\projects\sourcetree\c++\z-buffer\code\view.cpp(29): warning C4305: 'argument': truncation from 'double' to 'const float'
+  Z-Buffer.vcxproj -> D:\Projects\Sourcetree\C++\Z-Buffer\projects\vs-2015\Debug\Z-Buffer.exe

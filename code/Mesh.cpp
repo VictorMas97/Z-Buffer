@@ -9,8 +9,7 @@
 #include "tiny_obj_loader.h"
 
 namespace example
-{
-    
+{    
     Mesh::Mesh(const std::string & obj_file_path, Translation3f position, Scaling3f scale, Color color) : translation(position), scaling(scale)
     {
         tinyobj::attrib_t			     attrib;
@@ -54,7 +53,7 @@ namespace example
 			Vertex normalNormalized = Vertex({ original_normals[index][0] / normalVectorModule, original_normals[index][1] / normalVectorModule, original_normals[index][2] / normalVectorModule });
 			float dotProduct = ligth[0] * normalNormalized[0] + ligth[1] * normalNormalized[1] + ligth[2] * normalNormalized[2];
 			float intensity = std::max(dotProduct, 0.f);
-            original_colors[index].set(255 * intensity, 0, 0);
+            original_colors[index].set(color.data.component.r * intensity, color.data.component.g * intensity, color.data.component.b * intensity);
         }
 
 
@@ -72,9 +71,9 @@ namespace example
         }
     }
 
-	void Mesh::update()
+	void Mesh::update(Projection3f projection, Transformation3f parentTransform)
 	{
-
+		transformation = projection * parentTransform * translation * rotation_x * rotation_y * scaling;  // Creación de la matriz de transformación unificada:
 		// Se transforman todos los vertices usando la matriz de transformacion resultante:
 		for (size_t index = 0, number_of_vertices = original_vertices.size(); index < number_of_vertices; index++)
 		{
@@ -93,12 +92,20 @@ namespace example
 			vertex[2] *= divisor;
 			vertex[3] = 1.f;
 		}
+
+		for (auto &child : children)
+		{
+			child->update(projection, transformation);
+		}
 	}
-
-	bool drawn = false;
-
-	void Mesh::paint(Rasterizer<Color_Buffer>& rasterizer)
+	
+	void Mesh::paint(Rasterizer<Color_Buffer>& rasterizer, Transformation3f cameraTransform)
 	{
+		for (size_t index = 0, number_of_vertices = transformed_vertices.size(); index < number_of_vertices; index++)
+		{
+			display_vertices[index] = Point4i(Matrix44f(cameraTransform) * Matrix41f(transformed_vertices[index]));
+		}
+
 		for (int * indices = original_indices.data(), *end = indices + original_indices.size(); indices < end; indices += 3)
 		{
 			if (View::is_frontface(transformed_vertices.data(), indices))
@@ -109,6 +116,11 @@ namespace example
 				rasterizer.fill_convex_polygon_z_buffer(display_vertices.data(), indices, indices + 3);
 			}
 		}
-		drawn = true;
+
+		for (auto &child : children)
+		{
+			child->paint(rasterizer, cameraTransform);
+			std::cout << "hola" << std::endl;
+		}
 	}
 }

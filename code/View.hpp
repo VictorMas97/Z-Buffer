@@ -36,9 +36,9 @@ namespace example
 		size_t width;
 		size_t height;
 
-		Color_Buffer               Color_buffer;
-		Rasterizer< Color_Buffer > rasterizer;
-		vector< Mesh >			   meshes;
+		Color_Buffer                       Color_buffer;
+		Rasterizer< Color_Buffer >         rasterizer;
+		vector< std::shared_ptr <Mesh> >   meshes;
 
 	public:
 

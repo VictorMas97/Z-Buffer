@@ -11,10 +11,8 @@
 
 #include "View.hpp"
 #include <iostream>
-#include "Projection.hpp"
+//#include "Projection.hpp"
 #include "Translation.hpp"
-
-//using namespace toolkit;
 
 namespace example
 {
@@ -27,10 +25,10 @@ namespace example
         Color_buffer(width, height),
         rasterizer  (Color_buffer)
     {
-		//meshes.push_back({ "../../assets/bunny.obj", {1.f,0.f,-10 }, 1,{ 0,120,0 } });
-		meshes.push_back({ "../../assets/tree1.obj",{-1.f,0.f,-10 }, 0.5,{ 0,120,0 } });
-		//meshes.push_back({ "../../assets/bunny.obj",{ 1,0,-10 }, 1, {120,0,0} });
-		//meshes.push_back({ "../../assets/terrain.obj",{ 1,0,-10 }, 1, {120,0,0} });
+		Mesh object1 { "../../assets/tree1.obj",{-1.f,0.f,-10 }, 0.5,{ 0,120,0 } };
+		Mesh children1 { "../../assets/tree1.obj", {-1.f,0.f,0 }, 0.05,{ 0,0,120 } };
+		object1.children.push_back(std::make_shared <Mesh>(children1));
+		meshes.push_back(std::make_shared <Mesh>(object1));
     }
 
     void View::update ()
@@ -42,17 +40,14 @@ namespace example
 		// Camera
 		Projection3f  projection(5, 15, 20, float(width) / float(height));
 
-		for (auto mesh = meshes.begin(); mesh != meshes.end(); ++mesh)
+		for (auto &mesh : meshes)
 		{
 			// Setting rotation
 			//mesh->rotation_x.set< Rotation3f::AROUND_THE_X_AXIS >(0.50f);
 			//mesh->rotation_y.set< Rotation3f::AROUND_THE_Y_AXIS >(angle);
 
-			// Creación de la matriz de transformación unificada:
-			mesh->transformation = projection * mesh->translation * mesh->rotation_x * mesh->rotation_y * mesh->scaling;
-
 			// Update mesh
-			mesh->update();
+			mesh->update(projection);
 		}
     }
 
@@ -70,14 +65,9 @@ namespace example
 		// Se borra el framebúffer y se dibujan los triángulos:
 		rasterizer.clear();
 
-		for (auto mesh = meshes.begin(); mesh != meshes.end(); ++mesh)
+		for (auto &mesh : meshes)
 		{
-			for (size_t index = 0, number_of_vertices = mesh->transformed_vertices.size(); index < number_of_vertices; index++)
-			{
-				mesh->display_vertices[index] = Point4i(Matrix44f(transformation) * Matrix41f(mesh->transformed_vertices[index]));
-			}
-
-			mesh->paint(rasterizer);
+			mesh->paint(rasterizer, transformation);
 		}
 
         // Se copia el framebuffer oculto en el framebuffer de la ventana:
