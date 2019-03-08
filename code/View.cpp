@@ -1,17 +1,14 @@
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
- *                                                                             *
- *  Started by √Ångel on december of 2013                                       *
- *                                                                             *
- *  This is free software released into the public domain.                     *
- *                                                                             *
- *  angel.rodriguez@esne.edu                                                   *
- *                                                                             *
-\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/**
+* @file View.cpp
+* @author Victor Mas Toledo
+* @date 20/02/2019
+* @class View
+* @brief Clase en donde se llama a los mÈtodos de update y paint y al constructor de los padres "absolutos" para que se creen
+*/
 
 #include "View.hpp"
 #include <iostream>
-//#include "Projection.hpp"
 #include "Translation.hpp"
 
 namespace example
@@ -25,8 +22,8 @@ namespace example
         Color_buffer(width, height),
         rasterizer  (Color_buffer)
     {
-		Mesh object1 { "../../assets/tree1.obj",{-1.f,0.f,-10 }, 0.5,{ 0,120,0 } };
-		Mesh children1 { "../../assets/tree1.obj", {-1.f,0.f,0 }, 0.05,{ 0,0,120 } };
+		Mesh object1 { "../../assets/tree1.obj",{-1.f,0.f,-10.f }, 0.5,{ 0,120,0 } };
+		Mesh children1 { "../../assets/tree1.obj", {-1.f,0.f,0.f }, 0.05,{ 0,0,120 } };
 		object1.children.push_back(std::make_shared <Mesh>(children1));
 		meshes.push_back(std::make_shared <Mesh>(object1));
     }
@@ -44,7 +41,7 @@ namespace example
 		{
 			// Setting rotation
 			//mesh->rotation_x.set< Rotation3f::AROUND_THE_X_AXIS >(0.50f);
-			//mesh->rotation_y.set< Rotation3f::AROUND_THE_Y_AXIS >(angle);
+			mesh->rotation_y.set< Rotation3f::AROUND_THE_Y_AXIS >(angle);
 
 			// Update mesh
 			mesh->update(projection);

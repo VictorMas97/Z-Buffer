@@ -1,4 +1,12 @@
 
+/**
+* @file Mesh.cpp
+* @author Victor Mas Toledo
+* @date 25/02/2019
+* @class Mesh
+* @brief Clase en donde se crean, renderizan y pintan todas las meshes
+*/
+
 #include "Mesh.hpp"
 #include <cassert>
 #include <iostream>
@@ -120,7 +128,6 @@ namespace example
 		for (auto &child : children)
 		{
 			child->paint(rasterizer, cameraTransform);
-			std::cout << "hola" << std::endl;
 		}
 	}
 }
