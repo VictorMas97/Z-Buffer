@@ -1,13 +1,11 @@
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
- *                                                                             *
- *  Started by Ángel on october of 2013                                        *
- *                                                                             *
- *  This is free software released into the public domain.                     *
- *                                                                             *
- *  angel.rodriguez@esne.edu                                                   *
- *                                                                             *
-\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/**
+* @file main.cpp
+* @author Victor Mas Toledo
+* @date 20/02/2019
+* @class main
+* @brief Clase principal en donde se crea la escana
+*/
 
 #include "View.hpp"
 #include <SFML/Window.hpp>

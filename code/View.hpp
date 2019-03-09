@@ -78,7 +78,7 @@ namespace example
 		void paint();
 
 		/**
-		* @brief Crea modulos
+		* @brief Comprueba si las normales de los triángulos están mirando a la cámara
 		* @param projected_vertices -> los vertices proyectados de los triángulos de la mesh
 		* @param indices -> los indices de los triángulos de la mesh
 		*/
