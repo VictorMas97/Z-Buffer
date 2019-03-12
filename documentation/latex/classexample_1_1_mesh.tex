@@ -1,0 +1,256 @@
+\hypertarget{classexample_1_1_mesh}{}\section{Referencia de la Clase example\+::Mesh}
+\label{classexample_1_1_mesh}\index{example::Mesh@{example::Mesh}}
+
+
+{\ttfamily \#include $<$Mesh.\+hpp$>$}
+
+\subsection*{MÃ©todos pÃºblicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexample_1_1_mesh_a2047fad9be96ccc78986eb285abed331}{Mesh}} ()
+\begin{DoxyCompactList}\small\item\em Contructor por defecto de la mesh. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classexample_1_1_mesh_ab9ebe2e87f7c3e9bc3bdef47bf96c31d}{Mesh}} (const std\+::string \&obj\+\_\+file\+\_\+path, Translation3f position, Scaling3f scale, \mbox{\hyperlink{structexample_1_1_color___buffer___rgba8888_1_1_color}{Color}} color)
+\begin{DoxyCompactList}\small\item\em Contructor alternativo de la mesh. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classexample_1_1_mesh_a91e852734dfcd63a5fa4c173922bd809}{update}} (Projection3f projection, Transformation3f parent\+Transform=Transformation3f())
+\begin{DoxyCompactList}\small\item\em Se actualizan todas las meshes, padres e hijas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classexample_1_1_mesh_a096b867166bbe7f1626670bd5119ac8e}{paint}} (\mbox{\hyperlink{classexample_1_1_rasterizer}{Rasterizer}}$<$ \mbox{\hyperlink{classexample_1_1_color___buffer___rgba8888}{Color\+\_\+\+Buffer}} $>$ \&rasterizer, Transformation3f parent\+Transform)
+\begin{DoxyCompactList}\small\item\em Se pintan en la escena todas las meshes, padres e hijas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Atributos pÃºblicos}
+\begin{DoxyCompactItemize}
+\item 
+Vertex\+\_\+\+Buffer \mbox{\hyperlink{classexample_1_1_mesh_a70428a233b88ff09ef133b2114b2ca34}{original\+\_\+vertices}}
+\begin{DoxyCompactList}\small\item\em Vertices originales de la mesh. \end{DoxyCompactList}\item 
+Index\+\_\+\+Buffer \mbox{\hyperlink{classexample_1_1_mesh_a5fdc50c9adf12456a73311771c423a5d}{original\+\_\+indices}}
+\begin{DoxyCompactList}\small\item\em Indices originales de cada vertice de la mesh. \end{DoxyCompactList}\item 
+Vertex\+\_\+\+Colors \mbox{\hyperlink{classexample_1_1_mesh_a2cbc0cc7b79cb76e307f4f75106d831f}{original\+\_\+colors}}
+\begin{DoxyCompactList}\small\item\em Colores originales de cada triángulo de la mesh. \end{DoxyCompactList}\item 
+Vertex\+\_\+\+Buffer \mbox{\hyperlink{classexample_1_1_mesh_a862e6542001391bab0b10f1f368824d8}{original\+\_\+normals}}
+\begin{DoxyCompactList}\small\item\em Normales originales de cada triángulo de la mesh. \end{DoxyCompactList}\item 
+Vertex\+\_\+\+Buffer \mbox{\hyperlink{classexample_1_1_mesh_a6ca18660860c9844c6da2e7cf197f49c}{transformed\+\_\+vertices}}
+\begin{DoxyCompactList}\small\item\em Vertices transformados de la mesh. \end{DoxyCompactList}\item 
+vector$<$ Point4i $>$ \mbox{\hyperlink{classexample_1_1_mesh_a197c9c93dfbb3cab874a3fc1fc3ea49c}{display\+\_\+vertices}}
+\begin{DoxyCompactList}\small\item\em Vertices mostrador por pantalla de la mesh. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classexample_1_1_mesh}{Mesh}} $\ast$ \mbox{\hyperlink{classexample_1_1_mesh_ab79036be4ac8aa7c21274ac6c4eb7112}{parent}}
+\begin{DoxyCompactList}\small\item\em Referencia al padre de la mesh (No siempre hay un padre) \end{DoxyCompactList}\item 
+vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classexample_1_1_mesh}{Mesh}} $>$ $>$ \mbox{\hyperlink{classexample_1_1_mesh_a3e5b2dd66cbf029e4736fe09c657e974}{children}}
+\begin{DoxyCompactList}\small\item\em Referencia a las meshes hijas (No siempre hijos) \end{DoxyCompactList}\item 
+Translation3f \mbox{\hyperlink{classexample_1_1_mesh_a88dfa64a652f96ab2986bc1792579aa7}{translation}}
+\begin{DoxyCompactList}\small\item\em Translación de la mesh. \end{DoxyCompactList}\item 
+Rotation3f \mbox{\hyperlink{classexample_1_1_mesh_adaf8fe0fcab652fe9213bd01e24da182}{rotation\+\_\+x}}
+\begin{DoxyCompactList}\small\item\em Rotación en el eje X de la mesh. \end{DoxyCompactList}\item 
+Rotation3f \mbox{\hyperlink{classexample_1_1_mesh_a1bf3cef30421481ca90797d7144f11f5}{rotation\+\_\+y}}
+\begin{DoxyCompactList}\small\item\em Rotación en el eje Y de la mesh. \end{DoxyCompactList}\item 
+Scaling3f \mbox{\hyperlink{classexample_1_1_mesh_ad4aa6cce8f5263da4f8eb1dc79b274da}{scaling}}
+\begin{DoxyCompactList}\small\item\em Escala de la mesh. \end{DoxyCompactList}\item 
+Transformation3f \mbox{\hyperlink{classexample_1_1_mesh_a0ec815d61f6a91fe1ebcc9f68dd7d501}{transformation}}
+\begin{DoxyCompactList}\small\item\em Transform de la mesh. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{DocumentaciÃ³n del constructor y destructor}
+\mbox{\Hypertarget{classexample_1_1_mesh_a2047fad9be96ccc78986eb285abed331}\label{classexample_1_1_mesh_a2047fad9be96ccc78986eb285abed331}} 
+\index{example::Mesh@{example::Mesh}!Mesh@{Mesh}}
+\index{Mesh@{Mesh}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{Mesh()}{Mesh()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily example\+::\+Mesh\+::\+Mesh (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Contructor por defecto de la mesh. 
+
+\mbox{\Hypertarget{classexample_1_1_mesh_ab9ebe2e87f7c3e9bc3bdef47bf96c31d}\label{classexample_1_1_mesh_ab9ebe2e87f7c3e9bc3bdef47bf96c31d}} 
+\index{example::Mesh@{example::Mesh}!Mesh@{Mesh}}
+\index{Mesh@{Mesh}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{Mesh()}{Mesh()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Mesh\+::\+Mesh (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{obj\+\_\+file\+\_\+path,  }\item[{Translation3f}]{position,  }\item[{Scaling3f}]{scale,  }\item[{\mbox{\hyperlink{structexample_1_1_color___buffer___rgba8888_1_1_color}{Color}}}]{color }\end{DoxyParamCaption})}
+
+
+
+Contructor alternativo de la mesh. 
+
+
+\begin{DoxyParams}{ParÃ¡metros}
+{\em obj\+\_\+file\+\_\+path} & -\/$>$ ruta del archivo de la mesh \\
+\hline
+{\em position} & -\/$>$ posición de la mesh \\
+\hline
+{\em scale} & -\/$>$ escala de la mesh \\
+\hline
+{\em color} & -\/$>$ color de la mesh \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{DocumentaciÃ³n de las funciones miembro}
+\mbox{\Hypertarget{classexample_1_1_mesh_a096b867166bbe7f1626670bd5119ac8e}\label{classexample_1_1_mesh_a096b867166bbe7f1626670bd5119ac8e}} 
+\index{example::Mesh@{example::Mesh}!paint@{paint}}
+\index{paint@{paint}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void Mesh\+::paint (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classexample_1_1_rasterizer}{Rasterizer}}$<$ \mbox{\hyperlink{classexample_1_1_color___buffer___rgba8888}{Color\+\_\+\+Buffer}} $>$ \&}]{rasterizer,  }\item[{Transformation3f}]{parent\+Transform }\end{DoxyParamCaption})}
+
+
+
+Se pintan en la escena todas las meshes, padres e hijas. 
+
+
+\begin{DoxyParams}{ParÃ¡metros}
+{\em rasterizer} & -\/$>$ Referencia de los colores del rasterizador \\
+\hline
+{\em parent\+Transform} & -\/$>$ transform del padre \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classexample_1_1_mesh_a91e852734dfcd63a5fa4c173922bd809}\label{classexample_1_1_mesh_a91e852734dfcd63a5fa4c173922bd809}} 
+\index{example::Mesh@{example::Mesh}!update@{update}}
+\index{update@{update}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void Mesh\+::update (\begin{DoxyParamCaption}\item[{Projection3f}]{projection,  }\item[{Transformation3f}]{parent\+Transform = {\ttfamily Transformation3f()} }\end{DoxyParamCaption})}
+
+
+
+Se actualizan todas las meshes, padres e hijas. 
+
+
+\begin{DoxyParams}{ParÃ¡metros}
+{\em projection} & -\/$>$ la proyección de la cámara \\
+\hline
+{\em parent\+Transform} & -\/$>$ transform del padre, crea uno por defecto si no existe un padre \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{DocumentaciÃ³n de los datos miembro}
+\mbox{\Hypertarget{classexample_1_1_mesh_a3e5b2dd66cbf029e4736fe09c657e974}\label{classexample_1_1_mesh_a3e5b2dd66cbf029e4736fe09c657e974}} 
+\index{example::Mesh@{example::Mesh}!children@{children}}
+\index{children@{children}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{children}{children}}
+{\footnotesize\ttfamily vector$<$ std\+::shared\+\_\+ptr $<$\mbox{\hyperlink{classexample_1_1_mesh}{Mesh}}$>$ $>$ example\+::\+Mesh\+::children}
+
+
+
+Referencia a las meshes hijas (No siempre hijos) 
+
+\mbox{\Hypertarget{classexample_1_1_mesh_a197c9c93dfbb3cab874a3fc1fc3ea49c}\label{classexample_1_1_mesh_a197c9c93dfbb3cab874a3fc1fc3ea49c}} 
+\index{example::Mesh@{example::Mesh}!display\_vertices@{display\_vertices}}
+\index{display\_vertices@{display\_vertices}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{display\_vertices}{display\_vertices}}
+{\footnotesize\ttfamily vector$<$ Point4i $>$ example\+::\+Mesh\+::display\+\_\+vertices}
+
+
+
+Vertices mostrador por pantalla de la mesh. 
+
+\mbox{\Hypertarget{classexample_1_1_mesh_a2cbc0cc7b79cb76e307f4f75106d831f}\label{classexample_1_1_mesh_a2cbc0cc7b79cb76e307f4f75106d831f}} 
+\index{example::Mesh@{example::Mesh}!original\_colors@{original\_colors}}
+\index{original\_colors@{original\_colors}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{original\_colors}{original\_colors}}
+{\footnotesize\ttfamily Vertex\+\_\+\+Colors example\+::\+Mesh\+::original\+\_\+colors}
+
+
+
+Colores originales de cada triángulo de la mesh. 
+
+\mbox{\Hypertarget{classexample_1_1_mesh_a5fdc50c9adf12456a73311771c423a5d}\label{classexample_1_1_mesh_a5fdc50c9adf12456a73311771c423a5d}} 
+\index{example::Mesh@{example::Mesh}!original\_indices@{original\_indices}}
+\index{original\_indices@{original\_indices}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{original\_indices}{original\_indices}}
+{\footnotesize\ttfamily Index\+\_\+\+Buffer example\+::\+Mesh\+::original\+\_\+indices}
+
+
+
+Indices originales de cada vertice de la mesh. 
+
+\mbox{\Hypertarget{classexample_1_1_mesh_a862e6542001391bab0b10f1f368824d8}\label{classexample_1_1_mesh_a862e6542001391bab0b10f1f368824d8}} 
+\index{example::Mesh@{example::Mesh}!original\_normals@{original\_normals}}
+\index{original\_normals@{original\_normals}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{original\_normals}{original\_normals}}
+{\footnotesize\ttfamily Vertex\+\_\+\+Buffer example\+::\+Mesh\+::original\+\_\+normals}
+
+
+
+Normales originales de cada triángulo de la mesh. 
+
+\mbox{\Hypertarget{classexample_1_1_mesh_a70428a233b88ff09ef133b2114b2ca34}\label{classexample_1_1_mesh_a70428a233b88ff09ef133b2114b2ca34}} 
+\index{example::Mesh@{example::Mesh}!original\_vertices@{original\_vertices}}
+\index{original\_vertices@{original\_vertices}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{original\_vertices}{original\_vertices}}
+{\footnotesize\ttfamily Vertex\+\_\+\+Buffer example\+::\+Mesh\+::original\+\_\+vertices}
+
+
+
+Vertices originales de la mesh. 
+
+\mbox{\Hypertarget{classexample_1_1_mesh_ab79036be4ac8aa7c21274ac6c4eb7112}\label{classexample_1_1_mesh_ab79036be4ac8aa7c21274ac6c4eb7112}} 
+\index{example::Mesh@{example::Mesh}!parent@{parent}}
+\index{parent@{parent}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{parent}{parent}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classexample_1_1_mesh}{Mesh}}$\ast$ example\+::\+Mesh\+::parent}
+
+
+
+Referencia al padre de la mesh (No siempre hay un padre) 
+
+\mbox{\Hypertarget{classexample_1_1_mesh_adaf8fe0fcab652fe9213bd01e24da182}\label{classexample_1_1_mesh_adaf8fe0fcab652fe9213bd01e24da182}} 
+\index{example::Mesh@{example::Mesh}!rotation\_x@{rotation\_x}}
+\index{rotation\_x@{rotation\_x}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{rotation\_x}{rotation\_x}}
+{\footnotesize\ttfamily Rotation3f example\+::\+Mesh\+::rotation\+\_\+x}
+
+
+
+Rotación en el eje X de la mesh. 
+
+\mbox{\Hypertarget{classexample_1_1_mesh_a1bf3cef30421481ca90797d7144f11f5}\label{classexample_1_1_mesh_a1bf3cef30421481ca90797d7144f11f5}} 
+\index{example::Mesh@{example::Mesh}!rotation\_y@{rotation\_y}}
+\index{rotation\_y@{rotation\_y}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{rotation\_y}{rotation\_y}}
+{\footnotesize\ttfamily Rotation3f example\+::\+Mesh\+::rotation\+\_\+y}
+
+
+
+Rotación en el eje Y de la mesh. 
+
+\mbox{\Hypertarget{classexample_1_1_mesh_ad4aa6cce8f5263da4f8eb1dc79b274da}\label{classexample_1_1_mesh_ad4aa6cce8f5263da4f8eb1dc79b274da}} 
+\index{example::Mesh@{example::Mesh}!scaling@{scaling}}
+\index{scaling@{scaling}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{scaling}{scaling}}
+{\footnotesize\ttfamily Scaling3f example\+::\+Mesh\+::scaling}
+
+
+
+Escala de la mesh. 
+
+\mbox{\Hypertarget{classexample_1_1_mesh_a0ec815d61f6a91fe1ebcc9f68dd7d501}\label{classexample_1_1_mesh_a0ec815d61f6a91fe1ebcc9f68dd7d501}} 
+\index{example::Mesh@{example::Mesh}!transformation@{transformation}}
+\index{transformation@{transformation}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{transformation}{transformation}}
+{\footnotesize\ttfamily Transformation3f example\+::\+Mesh\+::transformation}
+
+
+
+Transform de la mesh. 
+
+\mbox{\Hypertarget{classexample_1_1_mesh_a6ca18660860c9844c6da2e7cf197f49c}\label{classexample_1_1_mesh_a6ca18660860c9844c6da2e7cf197f49c}} 
+\index{example::Mesh@{example::Mesh}!transformed\_vertices@{transformed\_vertices}}
+\index{transformed\_vertices@{transformed\_vertices}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{transformed\_vertices}{transformed\_vertices}}
+{\footnotesize\ttfamily Vertex\+\_\+\+Buffer example\+::\+Mesh\+::transformed\+\_\+vertices}
+
+
+
+Vertices transformados de la mesh. 
+
+\mbox{\Hypertarget{classexample_1_1_mesh_a88dfa64a652f96ab2986bc1792579aa7}\label{classexample_1_1_mesh_a88dfa64a652f96ab2986bc1792579aa7}} 
+\index{example::Mesh@{example::Mesh}!translation@{translation}}
+\index{translation@{translation}!example::Mesh@{example::Mesh}}
+\subsubsection{\texorpdfstring{translation}{translation}}
+{\footnotesize\ttfamily Translation3f example\+::\+Mesh\+::translation}
+
+
+
+Translación de la mesh. 
+
+
+
+La documentaciÃ³n para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_mesh_8hpp}{Mesh.\+hpp}}\item 
+\mbox{\hyperlink{_mesh_8cpp}{Mesh.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,86 @@
+\hypertarget{classexample_1_1_view}{}\section{Referencia de la Clase example\+::View}
+\label{classexample_1_1_view}\index{example::View@{example::View}}
+
+
+{\ttfamily \#include $<$View.\+hpp$>$}
+
+\subsection*{MÃ©todos pÃºblicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classexample_1_1_view_a98c2ba4fafcca06fc702d6cb5c0cead1}{View}} (size\+\_\+t width, size\+\_\+t height)
+\begin{DoxyCompactList}\small\item\em Crea la escena. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classexample_1_1_view_a1c98202846728b495760fad0907b8b0f}{update}} ()
+\begin{DoxyCompactList}\small\item\em Actualiza la rotación de la \mbox{\hyperlink{classexample_1_1_mesh}{Mesh}} y la cámara y llama al update de la/s mesh/es padre/s. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classexample_1_1_view_a6fee031066f703523ba75d337687838c}{paint}} ()
+\begin{DoxyCompactList}\small\item\em Llama al método paint de la/s mesh/es padre/s. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{MÃ©todos pÃºblicos estÃ¡ticos}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classexample_1_1_view_a72958f54b231004b22dc830e18f6bf23}{is\+\_\+frontface}} (const Vertex $\ast$const projected\+\_\+vertices, const int $\ast$const indices)
+\begin{DoxyCompactList}\small\item\em Comprueba si las normales de los triángulos están mirando a la cámara. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{DocumentaciÃ³n del constructor y destructor}
+\mbox{\Hypertarget{classexample_1_1_view_a98c2ba4fafcca06fc702d6cb5c0cead1}\label{classexample_1_1_view_a98c2ba4fafcca06fc702d6cb5c0cead1}} 
+\index{example::View@{example::View}!View@{View}}
+\index{View@{View}!example::View@{example::View}}
+\subsubsection{\texorpdfstring{View()}{View()}}
+{\footnotesize\ttfamily View\+::\+View (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{width,  }\item[{size\+\_\+t}]{height }\end{DoxyParamCaption})}
+
+
+
+Crea la escena. 
+
+
+\begin{DoxyParams}{ParÃ¡metros}
+{\em width} & -\/$>$ la anchura de la escena \\
+\hline
+{\em height} & -\/$>$ la altura de la escena \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{DocumentaciÃ³n de las funciones miembro}
+\mbox{\Hypertarget{classexample_1_1_view_a72958f54b231004b22dc830e18f6bf23}\label{classexample_1_1_view_a72958f54b231004b22dc830e18f6bf23}} 
+\index{example::View@{example::View}!is\_frontface@{is\_frontface}}
+\index{is\_frontface@{is\_frontface}!example::View@{example::View}}
+\subsubsection{\texorpdfstring{is\_frontface()}{is\_frontface()}}
+{\footnotesize\ttfamily bool View\+::is\+\_\+frontface (\begin{DoxyParamCaption}\item[{const Vertex $\ast$const}]{projected\+\_\+vertices,  }\item[{const int $\ast$const}]{indices }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Comprueba si las normales de los triángulos están mirando a la cámara. 
+
+
+\begin{DoxyParams}{ParÃ¡metros}
+{\em projected\+\_\+vertices} & -\/$>$ los vertices proyectados de los triángulos de la mesh \\
+\hline
+{\em indices} & -\/$>$ los indices de los triángulos de la mesh \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classexample_1_1_view_a6fee031066f703523ba75d337687838c}\label{classexample_1_1_view_a6fee031066f703523ba75d337687838c}} 
+\index{example::View@{example::View}!paint@{paint}}
+\index{paint@{paint}!example::View@{example::View}}
+\subsubsection{\texorpdfstring{paint()}{paint()}}
+{\footnotesize\ttfamily void View\+::paint (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Llama al método paint de la/s mesh/es padre/s. 
+
+\mbox{\Hypertarget{classexample_1_1_view_a1c98202846728b495760fad0907b8b0f}\label{classexample_1_1_view_a1c98202846728b495760fad0907b8b0f}} 
+\index{example::View@{example::View}!update@{update}}
+\index{update@{update}!example::View@{example::View}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void View\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Actualiza la rotación de la \mbox{\hyperlink{classexample_1_1_mesh}{Mesh}} y la cámara y llama al update de la/s mesh/es padre/s. 
+
+
+
+La documentaciÃ³n para esta clase fue generada a partir de los siguientes ficheros\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_view_8hpp}{View.\+hpp}}\item 
+\mbox{\hyperlink{_view_8cpp}{View.\+cpp}}\end{DoxyCompactItemize}
